@@ -1,0 +1,93 @@
+---
+title: "Exercício 1"
+description: |
+  A short description of the post.
+author:
+  - name: Athos Damiani
+date: 12-20-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercício 1: OneMax e BinInt
+
+```{python}
+import deap
+import random
+from deap import creator, base, tools, algorithms
+import numpy as np 
+from matplotlib import pyplot
+
+def gen_all_masks(i,j):
+  mk = []
+  for k in range(0,j-i+1):
+    mk += [1]   
+  all = [mk]
+  ch_bits(mk,0,all)
+  return all
+
+def find_best_mask(all_m):
+  max = 0;
+  best_mask = []
+  for m in all_m:
+    #f,__ = fTrap5(m)
+    #f,__ = evalOneMax(m)
+    f,__ = toolbox.evaluate(m) #evalOneMax(m) or fNTrap5
+    if f > max:
+      max = f
+      best_mask = m
+  return best_mask;
+
+def ch_bits(mk,k,all):
+  mkt = mk[:]
+
+  if k < len(mk)-1:
+    ch_bits(mkt,k+1,all)
+
+  while mk[k] == 1:
+    mkt[k] = 0
+    if k < len(mk)-1:
+      m = ch_bits(mkt,k+1,all)
+      k += 1
+  #print(mkt)
+    all += [mkt]
+  return all
+```
+
+```{python}
+# eval function
+def evalOneMax(individual):
+    return sum(individual),0
+```
+
+```{python}
+# creators
+creator.create("FitnessMax", base.Fitness, weights=(1,))
+creator.create("Individual", list, fitness = creator.FitnessMax)
+creator.create("Population", list)
+```
+
+```{python}
+def prepare_toolbox(fitness, n_chromossomes, n_torneios):
+  # toolbox
+  toolbox = base.Toolbox()
+  toolbox.register("attr_bool", random.randint, 0, 1)
+  toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, n = n_chromossomes)
+  toolbox.register("population", tools.initRepeat, creator.Population, toolbox.individual)
+
+  # genetic operators
+  toolbox.register("evaluate", fitness)
+  toolbox.register("mate", tools.cxTwoPoints)
+  toolbox.register("mutate", tools.mutFlipBit, indpb = 0.05)
+  toolbox.register("select", tools.selTournament, tournsize = n_torneios)
+
+  return toolbox
+```
+
+### OneMax

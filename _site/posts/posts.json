@@ -1,0 +1,18 @@
+[
+  {
+    "path": "posts/2020-12-20-exerccio-1/",
+    "title": "Exercício 1",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Athos Damiani",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-20",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-12-20T11:30:57-03:00",
+    "input_file": {}
+  }
+]
