@@ -1,0 +1,40 @@
+---
+title: "Exercício 2"
+description: |
+  Sobre risco de ótimos locais dominarem.
+author:
+  - name: Athos Damiani
+    url: {}
+date: 12-23-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Conclusão e discussão
+
+## Códigos e Gráficos
+
+### Setups e funções auxiliares
+
+```{r}
+library(reticulate)
+library(purrr)
+library(ggplot2)
+library(tidyverse)
+library(glue)
+theme_set(theme_gray(16))
+```
+
+```{python}
+import deap
+import random
+from deap import creator, base, tools, algorithms
+import numpy as np 
+from matplotlib import pyplot
+```

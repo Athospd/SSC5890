@@ -2,7 +2,7 @@
   {
     "path": "posts/2020-12-20-exerccio-1/",
     "title": "Exercício 1",
-    "description": "Sobre OneMax e BinInt",
+    "description": "Sobre OneMax, fNTrap5 e BinInt",
     "author": [
       {
         "name": "Athos Damiani",
@@ -12,7 +12,7 @@
     "date": "2020-12-20",
     "categories": [],
     "preview": "posts/2020-12-20-exerccio-1/exerccio-1_files/figure-html5/unnamed-chunk-5-1.png",
-    "last_modified": "2020-12-23T13:07:46-03:00",
+    "last_modified": "2020-12-23T18:17:26-03:00",
     "input_file": "exerccio-1.utf8.md"
   }
 ]
