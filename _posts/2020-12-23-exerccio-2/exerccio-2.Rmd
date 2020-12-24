@@ -1,7 +1,7 @@
 ---
 title: "Exercício 2"
 description: |
-Sobre risco de ótimos locais dominarem.
+  Sobre risco de ótimos locais dominarem.
 author:
   - name: Athos Damiani
     url: {}
@@ -84,10 +84,7 @@ n_simulado <- function(k, m)  {
 }
 
 n_simulado_h_vezes <- function(k, m, h = 3) {
-  cat(k, "--", m, "--")
   res <- mean(replicate(h, n_simulado(k, m)))
-  cat(res, "\n")
-  res
 }
 
 ```
@@ -96,7 +93,7 @@ n_simulado_h_vezes <- function(k, m, h = 3) {
 # grade de parâmetros (k, m, s, d)
 parametros <- expand.grid(
   k = c(1, 2, 4, 8),
-  m = round(10^seq(0, 3, l = 10)),
+  m = round(10^seq(0, 3, l = 20)),
   s = 2,
   d = 1
 ) %>%
@@ -113,9 +110,7 @@ knitr::kable(head(parametros))
 
 
 ```{r, fig.width=8, fig.height=6}
-f_sbb <- function(k, m) {
-  2^(1.5 - k/1.5) * m^(-0.6)*m^(0.12*k) * exp(-0.01*k*(log(m)^2)) 
-}
+f_sbb <- function(k, m) 2^(1.5 - k/1.5) * m^(-0.6)*m^(0.12*k) * exp(-0.01*k*(log(m)^2)) 
 parametros %>%
   mutate(
     s = f_sbb(k,m),
