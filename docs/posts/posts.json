@@ -2,18 +2,18 @@
   {
     "path": "posts/2020-12-23-exerccio-3/",
     "title": "Exercício 3",
-    "description": "Sobre análise temporal.",
+    "description": "Sobre análise temporal de convergência do OneMax.",
     "author": [
       {
         "name": "Athos Damiani",
         "url": {}
       }
     ],
-    "date": "2020-12-23",
+    "date": "2020-12-24",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-12-23T23:40:33-03:00",
-    "input_file": {}
+    "last_modified": "2020-12-24T19:00:05-03:00",
+    "input_file": "exerccio-3.utf8.md"
   },
   {
     "path": "posts/2020-12-23-exerccio-2/",
