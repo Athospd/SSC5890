@@ -5,7 +5,7 @@ description: |
 author:
   - name: Athos Damiani
     url: {}
-date: 12-23-2020
+date: 12-22-2020
 output:
   distill::distill_article:
     self_contained: false
@@ -80,7 +80,6 @@ Em que
 n_teorico <- function(k, m, s, d, a) log(a) * 2^(k-1) * s * sqrt(2*m)/d
 ```
 
-
 ```{r}
 fNTrap <- function(individual, k) py$fNTrap5(individual, k = k)[[1]]
 # funcao n da populacao simulada
@@ -88,6 +87,22 @@ n_simulado <- function(k, m, s, d, a)  {
   n_teorico(k, m, s, d, a)
 }
 ```
+
+```{python}
+def create_individual(m, k):
+  ind = []
+  for i in range(m):
+    block =[]
+    for j in range(k):
+      bit = random.randint(0, 1)
+      block.append(bit)
+    ind.append(block)
+  return ind
+
+create_individual(10, 3)
+```
+
+
 
 
 ```{r}
