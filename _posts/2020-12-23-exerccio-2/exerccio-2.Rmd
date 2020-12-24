@@ -88,6 +88,22 @@ n_simulado <- function(k, m, s, d, a)  {
 }
 ```
 
+```{python}
+def create_individual(m, k):
+  ind = []
+  for i in range(m):
+    block =[]
+    for j in range(k):
+      bit = random.randint(0, 1)
+      block.append(bit)
+    ind.append(block)
+  return ind
+
+create_individual(10, 3)
+```
+
+
+
 
 ```{r}
 # grade de parâmetros (k, m, s, d)

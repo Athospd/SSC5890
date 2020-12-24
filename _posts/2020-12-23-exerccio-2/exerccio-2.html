@@ -1040,6 +1040,22 @@ n_simulado &lt;- function(k, m, s, d, a)  {
 }</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+def create_individual(m, k):
+  ind = []
+  for i in range(m):
+    block =[]
+    for j in range(k):
+      bit = random.randint(0, 1)
+      block.append(bit)
+    ind.append(block)
+  return ind
+
+create_individual(10, 3)</code></pre>
+<pre><code>
+[[0, 0, 0], [0, 1, 0], [0, 1, 0], [0, 1, 1], [0, 0, 1], [0, 0, 0], [0, 1, 1], [0, 0, 0], [0, 1, 0], [1, 1, 1]]</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 # grade de parâmetros (k, m, s, d)
 parametros &lt;- expand.grid(
@@ -1135,7 +1151,7 @@ parametros %&gt;%
   scale_x_log10() +
   scale_y_log10() +
   labs(x = &quot;Número de BBs (m)&quot;, y = &quot;Tamanho da População (n)&quot;, colour = &quot;k&quot;, linetype = &quot;sigmaBB&quot;, shape = &quot;sigmaBB&quot;)</code></pre>
-<p><img src="exerccio-2_files/figure-html5/unnamed-chunk-6-1.png" width="768" /></p>
+<p><img src="exerccio-2_files/figure-html5/unnamed-chunk-7-1.png" width="768" /></p>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
