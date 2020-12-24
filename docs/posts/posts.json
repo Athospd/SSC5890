@@ -1,5 +1,37 @@
 [
   {
+    "path": "posts/2020-12-23-exerccio-2/",
+    "title": "Exercício 2",
+    "description": "Sobre risco de ótimos locais dominarem.",
+    "author": [
+      {
+        "name": "Athos Damiani",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-23",
+    "categories": [],
+    "preview": "posts/2020-12-23-exerccio-2/exerccio-2_files/figure-html5/unnamed-chunk-6-1.png",
+    "last_modified": "2020-12-23T23:35:08-03:00",
+    "input_file": "exerccio-2.utf8.md"
+  },
+  {
+    "path": "posts/2020-12-23-exerccio-3/",
+    "title": "Exercício 3",
+    "description": "Sobre análise temporal.",
+    "author": [
+      {
+        "name": "Athos Damiani",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-23",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-12-23T23:40:33-03:00",
+    "input_file": "exerccio-3.utf8.md"
+  },
+  {
     "path": "posts/2020-12-20-exerccio-1/",
     "title": "Exercício 1",
     "description": "Sobre OneMax, fNTrap5 e BinInt",

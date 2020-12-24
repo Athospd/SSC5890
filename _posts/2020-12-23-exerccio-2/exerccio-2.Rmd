@@ -36,5 +36,86 @@ import deap
 import random
 from deap import creator, base, tools, algorithms
 import numpy as np 
-from matplotlib import pyplot
+
+def fTrap5(individual, k = 5):
+  u = sum(individual)
+  if u < k:
+    return k-1-u , 0
+  else:
+    return k , 0
+
+def fNTrap5(individual,k=5): 
+  f = 0
+  l = len(individual)
+  r = l//k # r BBs of size k
+  small_bb = l%k 
+  for i in range(0,l-l//k,k):
+    bbk = individual[i:(i+k)]
+    x,__ = fTrap5(bbk, k)
+    f += x
+  if small_bb > 0:
+    bbk = individual[(i+k):(i+small_bb)]
+    x,__ = fTrap5(bbk, k)
+    f += x
+  return f,0
 ```
+
+Função do tamanho da população $n$:
+
+$$
+n \approx -\ln(\alpha) 2^{k-1}\frac{\sigma_{BB}\sqrt(2m)}{d}
+$$
+Em que 
+
+- $m$ é o tamanho do $BB$, 
+- $k$ é o tamanho da fitness armadilha (trap), 
+- $d$ é a distância entre ótimos global e local das traps,
+- $\sigma_{BB}$ é o desvio padrão de cada um dos $BB$s, 
+- $\alpha = 1/\ell$ é o risco do ótimo local dominar e
+- $\ell = mk$ é tamanho do cromossomo.
+
+
+```{r}
+# funcao n da população teórica
+n_teorico <- function(k, m, s, d, a) log(a) * 2^(k-1) * s * sqrt(2*m)/d
+```
+
+
+```{r}
+fNTrap <- function(individual, k) py$fNTrap5(individual, k = k)[[1]]
+# funcao n da populacao simulada
+n_simulado <- function(k, m, s, d, a)  {
+  n_teorico(k, m, s, d, a)
+}
+```
+
+
+```{r}
+# grade de parâmetros (k, m, s, d)
+parametros <- expand.grid(
+  k = c(1, 2, 4, 8),
+  m = round(10^seq(0, 3, l = 20)),
+  s = c(0.5, 1, 2),
+  d = 1
+) %>%
+  distinct() %>%
+  mutate(
+    a = 1/(m*k),
+    n_teorico  = n_teorico(k, m, s, d, a),
+    n_simulado = n_simulado(k, m, s, d, a)
+  )
+
+knitr::kable(head(parametros))
+```
+
+
+```{r, fig.width=8, fig.height=6}
+parametros %>%
+  ggplot(aes(x = m, colour = factor(k))) +
+  geom_point(aes(y = n_simulado, shape = factor(s))) +
+  geom_line(aes(y = n_teorico, linetype = factor(s))) +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x = "Número de BBs (m)", y = "Tamanho da População (n)", colour = "k", linetype = "sigmaBB", shape = "sigmaBB")
+```
+
